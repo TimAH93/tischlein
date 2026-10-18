@@ -1,0 +1,16 @@
+{
+  "name": "Tischlein deck dich",
+  "short_name": "Tischlein",
+  "description": "Rezepte, Vorrat & Nährwerte",
+  "lang": "de",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#fbf7f1",
+  "theme_color": "#8a4b2a",
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}

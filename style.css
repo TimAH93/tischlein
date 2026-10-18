@@ -1,0 +1,105 @@
+:root {
+  --bg: #fbf7f1;
+  --text: #2b2420;
+  --muted: #6f625a;
+  --line: #e4dacd;
+  --accent: #8a4b2a;
+  --accent-soft: #f1e3d6;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #1d1916;
+    --text: #efe7de;
+    --muted: #a99c91;
+    --line: #3a322c;
+    --accent: #e09a6b;
+    --accent-soft: #33271f;
+  }
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 18px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+a { color: var(--accent); }
+
+.top {
+  border-bottom: 1px solid var(--line);
+  padding: 12px 16px;
+}
+.brand { text-decoration: none; display: flex; flex-direction: column; }
+.brand-name { font-size: 22px; font-weight: 700; color: var(--accent); }
+.brand-sub { font-size: 14px; color: var(--muted); }
+
+main {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 16px 16px 64px;
+}
+
+h1 { font-size: 28px; line-height: 1.25; margin: 4px 0 8px; }
+h2 {
+  font-size: 20px;
+  margin: 28px 0 8px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid var(--line);
+}
+
+.meta { color: var(--muted); font-size: 15px; margin: 0 0 4px; }
+
+/* Recipe list */
+.recipe-list { list-style: none; padding: 0; margin: 0; }
+.recipe-list li { border-bottom: 1px solid var(--line); }
+.recipe-list a {
+  display: block;
+  padding: 14px 4px;
+  text-decoration: none;
+  color: var(--text);
+}
+.recipe-list .title { font-size: 20px; font-weight: 600; }
+
+/* Portions */
+.portions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 16px 0 4px;
+  font-size: 18px;
+}
+.portions button {
+  width: 48px;
+  height: 48px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--accent-soft);
+  color: var(--text);
+  font-size: 26px;
+  line-height: 1;
+  cursor: pointer;
+}
+.portions button:disabled { opacity: 0.4; }
+.portions output { font-size: 22px; font-weight: 700; min-width: 2ch; text-align: center; }
+.portions .reset { width: auto; height: auto; padding: 6px 10px; font-size: 14px; }
+
+/* Ingredients */
+.ingredients { list-style: none; padding: 0; margin: 0; }
+.ingredients li { padding: 6px 0; border-bottom: 1px dotted var(--line); }
+.amount { font-weight: 700; }
+.prep { color: var(--muted); }
+.note { display: block; font-size: 15px; color: var(--muted); }
+.optional { font-size: 14px; color: var(--muted); }
+
+/* Steps */
+.steps { padding-left: 1.6em; margin: 0; }
+.steps li { padding: 6px 0 10px; }
+.steps .amount { color: var(--accent); }
+
+.notes { padding-left: 1.2em; }
+
+.error { color: #b3261e; }

@@ -1,0 +1,47 @@
+{
+  "id": "red-lentil-sweet-potato-curry",
+  "title": "Rote-Linsen-Süßkartoffel-Curry",
+  "base_servings": 9,
+  "tags": ["freezer", "vegan", "meal-prep"],
+  "status": "cooked",
+  "cooked_on": ["2026-10-10"],
+  "rating": null,
+  "cost_per_portion_eur": 1.0,
+  "storage": {
+    "fridge_days": 4,
+    "freezer_months": 3,
+    "note": "Im Kühlschrank auftauen, einen Schuss Wasser dazu, gut durcherhitzen. Aufgetaute Portionen nicht wieder einfrieren."
+  },
+  "ingredients": [
+    { "id": "oel", "name": "Öl", "category": "oil", "amount": 3, "unit": "EL", "group": "Topf" },
+    { "id": "zwiebeln", "name": "große Zwiebeln", "name_singular": "große Zwiebel", "category": "onion", "amount": 3, "unit": "Stück", "prep": "fein gewürfelt", "group": "Schale 1" },
+    { "id": "knoblauch", "name": "Knoblauchzehen", "name_singular": "Knoblauchzehe", "category": "garlic", "amount": 6, "unit": "Stück", "prep": "fein gehackt", "group": "Schale 2" },
+    { "id": "ingwer", "name": "Ingwer", "category": "ginger", "amount": 45, "unit": "g", "prep": "frisch, gerieben", "group": "Schale 2" },
+    { "id": "curry", "name": "Currypulver", "category": "curry powder", "amount": 3, "unit": "EL", "group": "Gewürze" },
+    { "id": "kurkuma", "name": "Kurkuma", "category": "turmeric", "amount": 1.5, "unit": "TL", "group": "Gewürze" },
+    { "id": "kreuzkuemmel", "name": "Kreuzkümmel", "category": "cumin", "amount": 1.5, "unit": "TL", "group": "Gewürze" },
+    { "id": "linsen", "name": "rote Linsen", "category": "red lentils", "amount": 600, "unit": "g", "prep": "im Sieb abgespült", "group": "Schale 3" },
+    { "id": "suesskartoffel", "name": "Süßkartoffeln", "category": "sweet potato", "amount": 750, "unit": "g", "prep": "geschält, 2 cm Würfel", "group": "Schale 3" },
+    { "id": "kichererbsen", "name": "Kichererbsen", "category": "chickpeas", "amount": 360, "unit": "g", "prep": "abgetropft", "optional": true, "note": "Mit 1 Dose (ca. 240 g) 100 ml weniger Wasser nehmen.", "group": "Schale 3" },
+    { "id": "tomaten", "name": "gehackte Tomaten", "category": "chopped tomatoes", "amount": 600, "unit": "g", "group": "Schale 3" },
+    { "id": "kokosmilch", "name": "Kokosmilch", "category": "coconut milk", "amount": 400, "unit": "ml", "note": "Mit 600 ml Kokosmilch nur 900 ml Wasser nehmen.", "group": "Schale 3" },
+    { "id": "wasser", "name": "Wasser", "category": "water", "amount": 1000, "unit": "ml", "group": "Schale 3" },
+    { "id": "salz", "name": "Salz", "category": "salt", "amount": 2, "unit": "TL", "group": "Schale 3" },
+    { "id": "spinat", "name": "Spinat", "category": "spinach", "amount": 300, "unit": "g", "group": "Zum Schluss" },
+    { "id": "essig", "name": "Apfelessig", "category": "apple vinegar", "amount": 1, "unit": "EL", "prep": "statt Zitrone, nach Geschmack", "group": "Zum Schluss" }
+  ],
+  "steps": [
+    { "text": "{oel} im großen Topf erhitzen. {zwiebeln} darin bei mittlerer Hitze 7 Minuten weich dünsten.", "timer_seconds": 420 },
+    { "text": "{knoblauch} und {ingwer} dazugeben, 1 Minute mitbraten.", "timer_seconds": 60 },
+    { "text": "{curry}, {kurkuma} und {kreuzkuemmel} dazugeben, 30 Sekunden anrösten.", "timer_seconds": 30 },
+    { "text": "{linsen}, {suesskartoffel}, {kichererbsen}, {tomaten}, {kokosmilch}, {wasser} und {salz} dazugeben. Aufkochen lassen." },
+    { "text": "Halb zugedeckt 25 Minuten köcheln, dabei oft umrühren (besonders gegen Ende, die Linsen setzen an). Wird es zu dick, etwas Wasser nachgießen.", "timer_seconds": 1500 },
+    { "text": "{spinat} unterrühren, 2 Minuten. {essig} dazu, abschmecken und nachsalzen.", "timer_seconds": 120 },
+    { "text": "Komplett abkühlen lassen, in Boxen portionieren, einfrieren." }
+  ],
+  "notes": [
+    "Am 10.10.2026 gekocht: sehr lecker. Von 6 auf 9 Portionen hochskaliert, passt genau in den großen Topf.",
+    "Hatte nur 400 ml Kokosmilch, deshalb 1000 ml Wasser."
+  ],
+  "photos": []
+}
