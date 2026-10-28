@@ -345,3 +345,15 @@ Open questions for the user:
 - Photos: committed to the repo, or stored elsewhere?
 - Which scanning phase to start with (camera first is suggested)?
 - Should the recipe format get a cost-per-portion field?
+
+## 14. Vision update (28 Oct 2026)
+
+Said in chat after the PWA shell went live (milestone 1 done for the lentil curry; Rabokki and Panang still to add). Build it bit by bit, in this order of value:
+
+1. **Star rating 1–5 per recipe**, stored so it survives reloads. Plus the cooked/wishlist status. First version: saved in the browser on the tablet (`localStorage`), with a way to export so it can be written back into the recipe JSON later.
+2. **Three levels per recipe**, shown in the list and on the recipe: *Nährwert* (nutrition), *Geschmack* (taste) and *Kosten* (cost), each `hoch` / `mittel` / `niedrig`. The best dishes are tasty, nutritious and cheap, but not every recipe has to be. Levels are hand-set in the recipe JSON (`"levels": { "nutrition": "high", "taste": "high", "cost": "low" }`); later the nutrition level can be computed from the nutrition data (milestone 4).
+3. **A bigger recipe library**, not only dishes he has cooked: the ideas from section 7.8 as wishlist recipes, so the app has "many recipes I could just have".
+4. **Condiments/pantry list** (`pantry.json`, section 8 is the seed data): everything he has at home.
+5. **Recommendations**: ranked by what he has in the pantry (all or most ingredient categories in stock), his stars, the three levels, and his kitchen tools (cast-iron pan, induction, microwave, big pot; **no wok**, no oven listed yet). A recipe can declare `"tools": ["pan", "pot"]`; recipes needing a tool he lacks are shown but marked.
+
+This replaces the milestone order in section 13: ratings and levels come before the Ablauf view and shopping list.

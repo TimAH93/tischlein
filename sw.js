@@ -1,6 +1,6 @@
 // Service worker: network first, cache as offline fallback.
 // Online you always get the newest recipes; offline the last loaded version.
-const CACHE = "tischlein-v1";
+const CACHE = "tischlein-v2";
 const SHELL = [
   "./",
   "index.html",

@@ -64,6 +64,45 @@ h2 {
 }
 .recipe-list .title { font-size: 20px; font-weight: 600; }
 
+/* Stars and status */
+.stars { display: flex; align-items: center; gap: 2px; margin: 4px 0 8px; }
+.star {
+  width: 44px;
+  height: 44px;
+  border: 0;
+  background: none;
+  color: var(--muted);
+  font-size: 32px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0;
+}
+.star.on { color: #e0a62b; }
+.stars .meta { margin-left: 8px; }
+.star-text { color: #e0a62b; letter-spacing: 2px; }
+
+.status { display: flex; gap: 8px; margin: 0 0 8px; }
+.status button, .action {
+  padding: 8px 14px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: none;
+  color: var(--text);
+  font-size: 16px;
+  cursor: pointer;
+}
+.status button.on { background: var(--accent-soft); border-color: var(--accent); font-weight: 600; }
+
+.footer-links { margin-top: 24px; }
+pre.data {
+  font-size: 14px;
+  white-space: pre-wrap;
+  word-break: break-all;
+  background: var(--accent-soft);
+  padding: 12px;
+  border-radius: 10px;
+}
+
 /* Portions */
 .portions {
   display: flex;

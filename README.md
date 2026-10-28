@@ -7,6 +7,7 @@ Tischlein deck dich ist mein persönliches Kochbuch fürs Tablet: Rezepte mit sk
 - Statische PWA (HTML/JS/CSS, kein Build-Schritt), läuft auf GitHub Pages und offline.
 - Ein Rezept = eine JSON-Datei in `recipes/`. `{id}` im Schritt-Text wird durch die skalierte Menge ersetzt.
 - Skalieren: EL/TL und Stück runden auf ½, g und ml skalieren linear.
+- Sterne (1–5) und Gekocht/Wunschliste werden im Browser des Geräts gespeichert (`localStorage`). Unter „Meine Bewertungen (Export)“ lassen sie sich kopieren und in die Rezeptdateien übernehmen.
 
 ## Neues Rezept
 

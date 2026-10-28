@@ -24,6 +24,53 @@ async function loadJson(path) {
   return res.json();
 }
 
+// ---- local data: stars and cooked/wishlist, saved in this browser ---------
+// Shape: { "<recipe id>": { rating: 4, status: "cooked", updated: "2026-10-28" } }
+// Falls back to the values in the recipe JSON when nothing is saved locally.
+const STORE_KEY = "tischlein.local";
+const STATUS_LABEL = { cooked: "Gekocht", wishlist: "Wunschliste" };
+
+function loadLocal() {
+  try { return JSON.parse(localStorage.getItem(STORE_KEY)) || {}; } catch { return {}; }
+}
+function saveLocal(data) {
+  try { localStorage.setItem(STORE_KEY, JSON.stringify(data)); } catch { /* private mode etc. */ }
+}
+function localFor(recipe) {
+  const d = loadLocal()[recipe.id] || {};
+  return {
+    rating: d.rating ?? recipe.rating ?? null,
+    status: d.status ?? recipe.status ?? "wishlist",
+  };
+}
+function setLocal(id, patch) {
+  const all = loadLocal();
+  all[id] = { ...(all[id] || {}), ...patch, updated: new Date().toISOString().slice(0, 10) };
+  saveLocal(all);
+}
+
+function starText(rating) {
+  return rating ? "★".repeat(rating) + "☆".repeat(5 - rating) : "";
+}
+
+// Five tappable stars. Tapping the current star again clears the rating.
+function starRow(rating, onChange) {
+  return h("div", { class: "stars", "aria-label": "Bewertung" },
+    [1, 2, 3, 4, 5].map((n) =>
+      h("button", {
+        class: n <= rating ? "star on" : "star",
+        "aria-label": `${n} ${n === 1 ? "Stern" : "Sterne"}`,
+        onclick: () => onChange(n === rating ? null : n),
+      }, n <= rating ? "★" : "☆")),
+    h("span", { class: "meta" }, rating ? `${rating} von 5` : "noch nicht bewertet"));
+}
+
+function statusToggle(status, onChange) {
+  return h("div", { class: "status" },
+    Object.entries(STATUS_LABEL).map(([key, label]) =>
+      h("button", { class: key === status ? "on" : "", onclick: () => onChange(key) }, label)));
+}
+
 // ---- scaling -------------------------------------------------------------
 // Spoons and pieces stay in their unit and round to ½; g and ml scale linearly.
 const HALF_UNITS = new Set(["EL", "TL", "Stück"]);
@@ -58,19 +105,51 @@ async function showList() {
   app.replaceChildren(
     h("h1", null, "Rezepte"),
     h("ul", { class: "recipe-list" },
-      recipes.map((r) =>
-        h("li", null,
+      recipes.map((r) => {
+        const local = localFor(r);
+        return h("li", null,
           h("a", { href: `#/r/${r.id}` },
             h("div", { class: "title" }, r.title),
+            local.rating && h("div", { class: "star-text" }, starText(local.rating)),
             h("div", { class: "meta" },
-              `${r.base_servings} Portionen · ${r.status === "cooked" ? "gekocht" : "Wunschliste"}`,
-              r.tags.length ? ` · ${r.tags.join(", ")}` : ""))))));
+              `${r.base_servings} Portionen · ${STATUS_LABEL[local.status]}`,
+              r.tags.length ? ` · ${r.tags.join(", ")}` : "")));
+      })),
+    h("p", { class: "meta footer-links" }, h("a", { href: "#/daten" }, "Meine Bewertungen (Export)")));
+}
+
+// Shows what is saved in this browser, so it can be copied and written
+// back into the recipe files (no backend, so this is the sync for now).
+function showData() {
+  document.title = "Meine Bewertungen – Tischlein deck dich";
+  const data = loadLocal();
+  const json = JSON.stringify(data, null, 2);
+  const status = h("span", { class: "meta" });
+  app.replaceChildren(
+    h("p", { class: "meta" }, h("a", { href: "#/" }, "← Alle Rezepte")),
+    h("h1", null, "Meine Bewertungen"),
+    h("p", null, `${Object.keys(data).length} Rezepte bewertet oder markiert. Gespeichert nur in diesem Browser.`),
+    h("p", null,
+      h("button", { class: "action", onclick: async () => {
+        try { await navigator.clipboard.writeText(json); status.textContent = " Kopiert."; }
+        catch { status.textContent = " Kopieren ging nicht, bitte markieren und kopieren."; }
+      } }, "Kopieren"), status),
+    h("pre", { class: "data" }, json));
 }
 
 async function showRecipe(id) {
   const r = await loadJson(`recipes/${encodeURIComponent(id)}.json`);
   document.title = `${r.title} – Tischlein deck dich`;
   let servings = r.base_servings;
+
+  const rating = h("div");
+  const renderRating = () => {
+    const local = localFor(r);
+    rating.replaceChildren(
+      starRow(local.rating, (n) => { setLocal(r.id, { rating: n }); renderRating(); }),
+      statusToggle(local.status, (s) => { setLocal(r.id, { status: s }); renderRating(); }));
+  };
+  renderRating();
 
   const body = h("div");
   const render = () => body.replaceChildren(...recipeBody(r, servings, (n) => { servings = n; render(); }));
@@ -79,6 +158,7 @@ async function showRecipe(id) {
   app.replaceChildren(
     h("p", { class: "meta" }, h("a", { href: "#/" }, "← Alle Rezepte")),
     h("h1", null, r.title),
+    rating,
     body);
   window.scrollTo(0, 0);
 }
@@ -146,6 +226,7 @@ async function route() {
   const m = location.hash.match(/^#\/r\/([^/]+)$/);
   try {
     if (m) await showRecipe(decodeURIComponent(m[1]));
+    else if (location.hash === "#/daten") showData();
     else await showList();
   } catch (err) {
     app.replaceChildren(h("p", { class: "error" }, `Fehler: ${err.message}`),
