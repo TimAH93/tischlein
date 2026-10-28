@@ -6,6 +6,7 @@
   "status": "cooked",
   "cooked_on": ["2026-10-10"],
   "rating": null,
+  "levels": { "nutrition": "high", "taste": "high", "cost": "low" },
   "cost_per_portion_eur": 1.0,
   "storage": {
     "fridge_days": 4,

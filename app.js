@@ -49,6 +49,24 @@ function setLocal(id, patch) {
   saveLocal(all);
 }
 
+// ---- levels: hand-set per recipe in the JSON -----------------------------
+// "levels": { "nutrition": "high", "taste": "high", "cost": "low" }
+const LEVEL_NAME = { nutrition: "Nährwert", taste: "Geschmack", cost: "Kosten" };
+const LEVEL_VALUE = { high: "hoch", medium: "mittel", low: "niedrig" };
+
+function levelRow(levels) {
+  if (!levels) return null;
+  return h("div", { class: "levels" },
+    Object.keys(LEVEL_NAME).map((key) => {
+      const v = levels[key];
+      if (!v) return null;
+      // Cheap is good, so cost gets its "good" colour at low, the others at high.
+      const good = key === "cost" ? v === "low" : v === "high";
+      return h("span", { class: `level ${good ? "good" : v === "medium" ? "" : "weak"}` },
+        `${LEVEL_NAME[key]}: ${LEVEL_VALUE[v] ?? v}`);
+    }));
+}
+
 function starText(rating) {
   return rating ? "★".repeat(rating) + "☆".repeat(5 - rating) : "";
 }
@@ -111,6 +129,7 @@ async function showList() {
           h("a", { href: `#/r/${r.id}` },
             h("div", { class: "title" }, r.title),
             local.rating && h("div", { class: "star-text" }, starText(local.rating)),
+            levelRow(r.levels),
             h("div", { class: "meta" },
               `${r.base_servings} Portionen · ${STATUS_LABEL[local.status]}`,
               r.tags.length ? ` · ${r.tags.join(", ")}` : "")));
@@ -158,7 +177,7 @@ async function showRecipe(id) {
   app.replaceChildren(
     h("p", { class: "meta" }, h("a", { href: "#/" }, "← Alle Rezepte")),
     h("h1", null, r.title),
-    rating,
+    h("div", null, rating, levelRow(r.levels)),
     body);
   window.scrollTo(0, 0);
 }

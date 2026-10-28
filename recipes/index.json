@@ -5,6 +5,11 @@
     "base_servings": 9,
     "status": "cooked",
     "rating": null,
+    "levels": {
+      "nutrition": "high",
+      "taste": "high",
+      "cost": "low"
+    },
     "tags": [
       "freezer",
       "vegan",

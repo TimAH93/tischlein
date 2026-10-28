@@ -1,6 +1,6 @@
 // Service worker: network first, cache as offline fallback.
 // Online you always get the newest recipes; offline the last loaded version.
-const CACHE = "tischlein-v2";
+const CACHE = "tischlein-v3";
 const SHELL = [
   "./",
   "index.html",
@@ -36,7 +36,9 @@ self.addEventListener("fetch", (event) => {
   event.respondWith((async () => {
     const cache = await caches.open(CACHE);
     try {
-      const res = await fetch(req);
+      // no-cache: always ask the server whether the file changed, instead of
+      // trusting the browser's HTTP cache (which can keep JSON for a day).
+      const res = await fetch(req, { cache: "no-cache" });
       if (res.ok) cache.put(req, res.clone());
       return res;
     } catch {

@@ -17,6 +17,7 @@ for (const file of files) {
     base_servings: r.base_servings,
     status: r.status,
     rating: r.rating ?? null,
+    levels: r.levels ?? null,
     tags: r.tags ?? [],
   });
 }
