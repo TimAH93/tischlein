@@ -1,6 +1,6 @@
 // Service worker: network first, cache as offline fallback.
 // Online you always get the newest recipes; offline the last loaded version.
-const CACHE = "tischlein-v3";
+const CACHE = "tischlein-v4";
 const SHELL = [
   "./",
   "index.html",
@@ -10,6 +10,7 @@ const SHELL = [
   "icons/icon-192.png",
   "icons/icon-512.png",
   "recipes/index.json",
+  "pantry.json",
 ];
 
 self.addEventListener("install", (event) => {

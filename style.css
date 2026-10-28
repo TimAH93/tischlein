@@ -36,6 +36,17 @@ a { color: var(--accent); }
 .brand { text-decoration: none; display: flex; flex-direction: column; }
 .brand-name { font-size: 22px; font-weight: 700; color: var(--accent); }
 .brand-sub { font-size: 14px; color: var(--muted); }
+.top { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.nav { display: flex; gap: 16px; font-size: 17px; }
+.nav a { text-decoration: none; padding: 8px 0; }
+
+/* Pantry */
+.pantry, .cookable, .warnings { list-style: none; padding: 0; margin: 0; }
+.pantry li, .cookable li, .warnings li { padding: 6px 0; border-bottom: 1px dotted var(--line); }
+.pantry li.warn { border-left: 3px solid #c9542b; padding-left: 8px; }
+.warn-text, .warnings li { color: #c9542b; }
+.missing { color: var(--muted); }
+.ok { color: #3a8f4a; font-weight: 600; }
 
 main {
   max-width: 760px;

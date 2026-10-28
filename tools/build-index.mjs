@@ -19,6 +19,10 @@ for (const file of files) {
     rating: r.rating ?? null,
     levels: r.levels ?? null,
     tags: r.tags ?? [],
+    // ingredient categories, so the pantry view can check what is in stock
+    // without fetching every recipe
+    categories: Object.values(Object.fromEntries(
+      r.ingredients.filter((i) => !i.optional).map((i) => [i.category, { category: i.category, name: i.name }]))),
   });
 }
 recipes.sort((a, b) => a.title.localeCompare(b.title, "de"));

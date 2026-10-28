@@ -14,6 +14,68 @@
       "freezer",
       "vegan",
       "meal-prep"
+    ],
+    "categories": [
+      {
+        "category": "oil",
+        "name": "Öl"
+      },
+      {
+        "category": "onion",
+        "name": "große Zwiebeln"
+      },
+      {
+        "category": "garlic",
+        "name": "Knoblauchzehen"
+      },
+      {
+        "category": "ginger",
+        "name": "Ingwer"
+      },
+      {
+        "category": "curry powder",
+        "name": "Currypulver"
+      },
+      {
+        "category": "turmeric",
+        "name": "Kurkuma"
+      },
+      {
+        "category": "cumin",
+        "name": "Kreuzkümmel"
+      },
+      {
+        "category": "red lentils",
+        "name": "rote Linsen"
+      },
+      {
+        "category": "sweet potato",
+        "name": "Süßkartoffeln"
+      },
+      {
+        "category": "chopped tomatoes",
+        "name": "gehackte Tomaten"
+      },
+      {
+        "category": "coconut milk",
+        "name": "Kokosmilch"
+      },
+      {
+        "category": "water",
+        "name": "Wasser"
+      },
+      {
+        "category": "salt",
+        "name": "Salz"
+      },
+      {
+        "category": "spinach",
+        "name": "Spinat"
+      },
+      {
+        "category": "apple vinegar",
+        "name": "Apfelessig"
+      }
     ]
   }
 ]

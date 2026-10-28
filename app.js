@@ -134,7 +134,9 @@ async function showList() {
               `${r.base_servings} Portionen · ${STATUS_LABEL[local.status]}`,
               r.tags.length ? ` · ${r.tags.join(", ")}` : "")));
       })),
-    h("p", { class: "meta footer-links" }, h("a", { href: "#/daten" }, "Meine Bewertungen (Export)")));
+    h("p", { class: "meta footer-links" },
+      h("a", { href: "#/vorrat" }, "Vorrat"), " · ",
+      h("a", { href: "#/daten" }, "Meine Bewertungen (Export)")));
 }
 
 // Shows what is saved in this browser, so it can be copied and written
@@ -240,12 +242,88 @@ function recipeBody(r, servings, setServings) {
   return out.filter(Boolean);
 }
 
+// ---- pantry (Vorrat) -----------------------------------------------------
+const LOCATION_LABEL = { fridge: "Kühlschrank", cupboard: "Vorratsschrank", freezer: "Gefrierfach" };
+const ITEM_STATUS = { sealed: "ungeöffnet", open: "offen", low: "fast leer", empty: "leer" };
+const ALWAYS_IN_STOCK = new Set(["water"]);
+
+function daysSince(iso) {
+  return Math.floor((Date.now() - new Date(iso).getTime()) / 86400000);
+}
+
+// "Knüppel aus dem Sack": says when an item is open too long or past its date.
+function itemWarning(item) {
+  const today = new Date().toISOString().slice(0, 10);
+  if (item.best_before && item.best_before < today) return `MHD ${formatDate(item.best_before)} abgelaufen`;
+  if (item.opened_on && item.best_opened_days) {
+    const days = daysSince(item.opened_on);
+    if (days > item.best_opened_days) return `seit ${days} Tagen offen, besser innerhalb von ${item.best_opened_days} Tagen`;
+  }
+  return null;
+}
+
+function formatDate(iso) {
+  const [y, m, d] = iso.split("-");
+  return `${d}.${m}.${y}`;
+}
+
+async function showPantry() {
+  const [pantry, recipes] = await Promise.all([loadJson("pantry.json"), loadJson("recipes/index.json")]);
+  document.title = "Vorrat – Tischlein deck dich";
+  const inStock = new Set(pantry.items.filter((i) => i.status !== "empty").map((i) => i.category));
+  const warnings = pantry.items.map((i) => [i, itemWarning(i)]).filter(([, w]) => w);
+
+  // Which recipes work with what is here? Lists the missing categories otherwise.
+  const cookable = recipes.map((r) => {
+    const missing = r.categories.filter((c) => !inStock.has(c.category) && !ALWAYS_IN_STOCK.has(c.category));
+    return { r, missing: missing.map((c) => c.name) };
+  }).sort((a, b) => a.missing.length - b.missing.length);
+
+  const out = [
+    h("h1", null, "Vorrat"),
+    h("p", { class: "meta" }, `${pantry.items.length} Sachen, Stand ${formatDate(pantry.updated)}`),
+  ];
+
+  if (warnings.length) {
+    out.push(h("h2", null, "Knüppel aus dem Sack"),
+      h("ul", { class: "warnings" }, warnings.map(([i, w]) => h("li", null, h("b", null, i.name), `: ${w}`))));
+  }
+
+  out.push(h("h2", null, "Was kann ich kochen?"),
+    h("ul", { class: "cookable" }, cookable.map(({ r, missing }) =>
+      h("li", null,
+        h("a", { href: `#/r/${r.id}` }, r.title),
+        missing.length
+          ? h("span", { class: "missing" }, ` – fehlt: ${missing.join(", ")}`)
+          : h("span", { class: "ok" }, " – alles da")))));
+
+  for (const loc of Object.keys(LOCATION_LABEL)) {
+    const items = pantry.items.filter((i) => i.location === loc);
+    if (!items.length) continue;
+    out.push(h("h2", null, LOCATION_LABEL[loc]),
+      h("ul", { class: "pantry" }, items.map((i) => {
+        const warn = itemWarning(i);
+        return h("li", { class: warn ? "warn" : "" },
+          h("span", { class: "amount" }, i.name),
+          i.brand && h("span", { class: "prep" }, ` (${i.brand})`),
+          i.size && ` · ${i.size}`,
+          ` · ${ITEM_STATUS[i.status] ?? i.status}`,
+          i.opened_on && `, seit ${formatDate(i.opened_on)}`,
+          warn && h("span", { class: "note warn-text" }, warn),
+          i.note && h("span", { class: "note" }, i.note));
+      })));
+  }
+  app.replaceChildren(...out);
+  window.scrollTo(0, 0);
+}
+
 // ---- routing -------------------------------------------------------------
 async function route() {
   const m = location.hash.match(/^#\/r\/([^/]+)$/);
   try {
     if (m) await showRecipe(decodeURIComponent(m[1]));
     else if (location.hash === "#/daten") showData();
+    else if (location.hash === "#/vorrat") await showPantry();
     else await showList();
   } catch (err) {
     app.replaceChildren(h("p", { class: "error" }, `Fehler: ${err.message}`),
