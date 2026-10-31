@@ -39,7 +39,8 @@ Data source suggestion: USDA FoodData Central (free, includes micronutrients). C
 ## 2. Cooking context
 
 - Good home cook, loves cooking for himself, his girlfriend and his mother. Wants tasty, healthy food with little active time; big batches that freeze well are ideal.
-- Kitchen: cast-iron pan, induction hob, microwave, a big pot (fits 9 portions). **No wok**, so stir-fries are made in a heavy pan.
+- Kitchen: cast-iron pan, induction hob, microwave, a big pot (fits 9 portions). **No wok**, so stir-fries are made in a heavy pan. **No fume hood** (open window only, 29 Oct 2026): he loves restaurant-style wok cooking but worries about oil fumes, so stir-fry recipes should be written for the pan, in small batches, with oil kept below its smoke point. He has decided (29 Oct) that smoky high-heat cooking is not for his current kitchen; a proper kitchen with a fume hood is a long-term wish. He owns a **gas camping stove** and wants to cook with it outdoors, which is where wok-style dishes could go later (recipe tool tag `gas-outdoor`).
+- Gear reality (29 Oct 2026): the cast-iron pan is very big and heavy, so it is not the daily pan; an old Teflon pan still works, plus one more working pan; pots are thin on the ground (one is too small). He threw away small cast-iron pans and a bigger pot in the past and regrets it. **Budget is tight**, no new gear for now; a 28 cm carbon-steel pan (cheap or secondhand) is the first thing to buy when possible. Recipes should assume: one big heavy pan, one non-stick pan, the big pot.
 - Habit: smells each new sauce, then tastes it plain on a teaspoon to understand its flavor. The app should have a place for these taste notes.
 - Shops: rarely at an Asian supermarket (Tain Kim Heng, Oberhausen), fresh things at Netto.
 - First Asian haul, 17 Oct 2026: EUR 44.77 (original idea was EUR 20–30). He sees it as a one-off stock-up for autumn, winter and spring.

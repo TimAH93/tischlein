@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-28",
+  "updated": "2026-10-31",
   "items": [
     { "id": "red-curry-paste", "name": "Rote Currypaste", "category": "red curry paste", "size": "1 kg Eimer", "location": "freezer", "status": "open", "opened_on": "2026-10-18", "best_opened_days": 60, "price_eur": 5.99,
       "note": "In 2–3 EL Portionen eingefroren, kleine Menge im Kühlschrank. Im Kühlschrank nur 1–2 Monate, gefroren viele Monate." },
@@ -29,7 +29,7 @@
       "note": "Jahre alt, noch okay solange es frisch riecht und schmeckt. Nächstes Mal kleinen frischen Becher kaufen." },
     { "id": "gunpowder-tea", "name": "Gunpowder-Tee (grün)", "category": "green tea", "size": "1 kg", "location": "cupboard", "status": "sealed", "note": "Luftdicht, weg von den Gewürzen." },
 
-    { "id": "soy-sauce", "name": "Sojasauce", "brand": "Kikkoman", "category": "soy sauce", "location": "cupboard", "status": "open" },
+    { "id": "soy-sauce", "name": "Sojasauce, hell", "brand": "Kikkoman", "category": "soy sauce", "location": "cupboard", "status": "open" },
     { "id": "rice", "name": "Reis", "category": "rice", "location": "cupboard", "status": "open" },
     { "id": "rice-vinegar", "name": "Reisessig", "category": "rice vinegar", "location": "cupboard", "status": "low", "note": "Nur noch ein Rest. Kein Sushi-Su kaufen, der ist zu süß." },
     { "id": "apple-vinegar", "name": "Apfelessig", "category": "apple vinegar", "location": "cupboard", "status": "open" },
@@ -39,6 +39,32 @@
     { "id": "cumin", "name": "Kreuzkümmel", "category": "cumin", "location": "cupboard", "status": "open" },
     { "id": "onions", "name": "Zwiebeln", "category": "onion", "location": "cupboard", "status": "open" },
     { "id": "lemon-pepper", "name": "Zitronenpfeffer", "category": "lemon pepper", "location": "cupboard", "status": "open" },
+
+    { "id": "marjoram", "name": "Majoran", "brand": "Ostmann", "category": "marjoram", "size": "20 g, gerebelt", "location": "cupboard", "status": "open", "opened_on": "2026-10-26", "price_eur": 2.99, "note": "Für Linseneintopf, 2 TL auf 12 Portionen." },
+    { "id": "tarragon", "name": "Estragon", "category": "tarragon", "location": "cupboard", "status": "open", "note": "Aus dem Spezialitätenladen, Netto hat keinen. Anisartig, sparsam: 1 TL für 2 Portionen. Nicht, wenn der Freund mitisst." },
+    { "id": "garam-masala", "name": "Garam Masala", "category": "garam masala", "location": "cupboard", "status": "open", "note": "1 TL zum Schluss in Linsencurry oder Dal." },
+    { "id": "smoked-paprika", "name": "Paprikapulver, geräuchert", "category": "smoked paprika", "location": "cupboard", "status": "open", "note": "Eintöpfe, Bohnen, Röstkartoffeln, Eier." },
+    { "id": "ground-coriander", "name": "Koriander, gemahlen", "category": "ground coriander", "location": "cupboard", "status": "open", "note": "Saté-Marinade, Currys." },
+    { "id": "garlic-powder", "name": "Knoblauchpulver", "category": "garlic powder", "location": "cupboard", "status": "open", "note": "1 Zehe ≈ ¼ TL. Mit der Flüssigkeit dazugeben, nicht ins heiße Öl, sonst verbrennt es." },
+    { "id": "garlic", "name": "Knoblauch, frisch", "category": "garlic", "location": "cupboard", "status": "empty", "note": "Knolle war schimmelig, weggeworfen. Bis zum nächsten Einkauf Knoblauchpulver nehmen." },
+    { "id": "tomato-paste", "name": "Tomatenmark", "brand": "BioBio", "category": "tomato paste", "size": "2 × 200 g Glas, eins offen", "location": "fridge", "status": "open", "opened_on": "2026-10-26", "best_opened_days": 7, "price_eur": 0.95, "note": "Offenes Glas hält 5–7 Tage, unter einer Ölschicht etwa 2 Wochen. Besser in EL-Klecksen einfrieren." },
+    { "id": "potatoes", "name": "Kartoffeln", "brand": "Pfanni", "category": "potatoes", "size": "2,5 kg Beutel (blau), etwa 1,9 kg übrig", "location": "cupboard", "status": "open", "opened_on": "2026-10-26", "price_eur": 3.29, "note": "Kühl und dunkel lagern." },
+    { "id": "celeriac", "name": "Knollensellerie", "category": "celeriac", "size": "etwa 380 g Rest, eingewickelt", "location": "fridge", "status": "open", "opened_on": "2026-10-26", "best_opened_days": 14, "note": "Angeschnitten etwa 2 Wochen im Kühlschrank." },
+    { "id": "mixed-vegetables", "name": "Gemüse sortiert", "brand": "BioBio", "category": "mixed vegetables", "size": "750 g", "location": "freezer", "status": "sealed", "price_eur": 2.69, "note": "Nicht im Eintopf gelandet. Lagerort laut Update unklar, bitte prüfen." },
+    { "id": "frying-oil", "name": "Frittieröl, gebraucht", "category": "frying oil", "size": "einmal benutzt (30.10.), falls behalten", "location": "cupboard", "status": "open", "opened_on": "2026-10-30", "best_opened_days": 30, "note": "Durch Sieb oder Kaffeefilter, geschlossen, dunkel. Noch 3–5 Mal nutzbar; weg, wenn ranzig, sehr dunkel oder schäumend. Nie in den Abfluss, geschlossen in den Restmüll." },
+    { "id": "beer-alcohol-free", "name": "Bitburger Pils 0,0 %", "category": "non-alcoholic beer", "size": "2 Dosen 0,5 l", "location": "cupboard", "status": "sealed", "price_eur": 0.99, "note": "Für Bierteig (Fish & Chips, Zwiebelringe)." },
+    { "id": "beer-dark", "name": "Paderborner Liborius Dunkel", "category": "dark beer", "location": "cupboard", "status": "sealed", "note": "Für Steak & Ale Pie." },
+
+    { "id": "stock-powder", "name": "Gemüsebrühe, gekörnt", "category": "vegetable stock powder", "location": "cupboard", "status": "open", "note": "1 gehäufter EL ≈ 2 gestrichene EL. Mit Speck und Wurst erst 4 gehäufte EL auf 3 l, dann abschmecken." },
+    { "id": "bay-leaves", "name": "Lorbeerblätter", "category": "bay leaves", "location": "cupboard", "status": "open" },
+    { "id": "balsamico", "name": "Balsamico", "category": "balsamic vinegar", "location": "cupboard", "status": "open", "note": "Für Eintöpfe zum Schluss, nicht in die Erdnusssauce." },
+    { "id": "mustard", "name": "Senf", "category": "mustard", "size": "mittelscharf (billig) und Dijon", "location": "fridge", "status": "open", "note": "Auf den Teller, nicht in den Topf. Dijon ist schärfer, weniger nehmen." },
+    { "id": "brown-sugar", "name": "Brauner Zucker", "category": "brown sugar", "location": "cupboard", "status": "open" },
+    { "id": "honey", "name": "Honig", "category": "honey", "location": "cupboard", "status": "open" },
+    { "id": "sushi-su", "name": "Sushi-Su", "category": "sushi vinegar", "location": "cupboard", "status": "open", "note": "Gesüßter Reisessig. Wenn er Essig ersetzt, Zucker im Rezept halbieren (Erdnusssauce: nur 1 EL Zucker)." },
+    { "id": "chicken-powder", "name": "Hühnerbrühpulver", "category": "chicken powder", "location": "cupboard", "status": "open", "note": "Eiblumensuppe, Wok-Saucen." },
+    { "id": "msg", "name": "Glutamat (MSG)", "category": "msg", "location": "cupboard", "status": "open" },
+    { "id": "starch", "name": "Speisestärke", "category": "starch", "location": "cupboard", "status": "open", "staple": true, "note": "Immer erst in kaltem Wasser anrühren. Frittierteig: 1 Ei + 4–5 EL auf 500 g Hähnchen." },
 
     { "id": "oil", "name": "Öl", "category": "oil", "location": "cupboard", "status": "open", "staple": true },
     { "id": "salt", "name": "Salz", "category": "salt", "location": "cupboard", "status": "open", "staple": true },
